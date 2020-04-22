@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        function changeNum(choice){
+            switch (choice) {
+                case 1:
+                    choice = 'scissors';                    
+                    break;
+                case 2:
+                    choice = 'rock';
+                    break
+                case 3:
+                    choice = 'paper';
+                    break                
+            }
+            return choice;
+        }
+        function rpc(val){
+            // var player = document.getElementsByName("choice").value;           
+            var player = val;
+            // document.write(player + "<br/>");
+            // player = changeNum(player);
+            // document.write(player);
+            var computer = parseInt(Math.random()*30)%3 +1;
+            // document.write(computer)
+            var player_img = document.getElementById("player");
+            var com_img = document.getElementById("computer");
+            
+            player_img.src = "../images/" + changeNum(player) + ".jpg";            
+            com_img.src = "../images/" + changeNum(computer) + ".jpg";
+            
+
+            //switch문 이용 player-computer를 이용하는게 더 코드가 나은듯
+
+            if(player==computer){
+                console.log("비겼습니다.")
+                document.getElementById("result").innerHTML = "비겼습니다.";
+            }
+            else{
+                if(player==2 || player==3){
+                    if(player-computer==1){
+                        console.log("이겼습니다.")
+                        document.getElementById("result").innerHTML = "이겼습니다."
+                    }
+                    else{
+                        console.log("졌습니다.")
+                        document.getElementById("result").innerHTML = "졌습니다."
+                    }
+                }           
+                else{
+                    if(computer-player==2){
+                        console.log("이겼습니다.")
+                        document.getElementById("result").innerHTML = "이겼습니다."
+                    }
+                    else{
+                        console.log("졌습니다.")
+                        document.getElementById("result").innerHTML = "졌습니다."
+                    }
+                }
+            }         
+
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <fieldset>
+    <table border="1px">
+        <tr>
+            <td>
+                컴퓨터
+            </td>
+            <td>
+                나
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img id="computer" src="../images/start.png" width="200px" height="200px" alt="컴퓨터" />
+            </td>
+            <td>
+                <img id="player" src="../images/start.png" width="200px" height="200px" alt="플레이어" />
+            </td>                        
+        </tr>
+        <tr>
+            <td colspan="2">
+                <span id = "result" style="font-size: 2em; color: red; font-family: '배달의민족 을지로체 TTF';">
+                    가위바위보게임
+                </span>
+            </td>
+        </tr>
+    </table>
+        
+        <input type="button" name="choice" value="가위" onclick="rpc(1);">
+        <input type="button" name="choice" value="바위" onclick="rpc(2);">
+        <input type="button" name="choice" value="보" onclick="rpc(3);">
+        
+    
+    </fieldset>
+</body>
+</html>
