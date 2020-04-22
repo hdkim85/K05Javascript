@@ -16,13 +16,13 @@
             }
         }
 
-        function idFocus(flag, obj){
+        function idFocus(flag, obj){//포커스 얻었을 때
             if(flag==1){
                 if(obj.value=="아이디를 입력해주세요."){
                     obj.value="";
                 }
             }
-            else if(flag==2){
+            else if(flag==2){//포커스 잃었을 때
                 if(obj.value==""){
                     obj.value="아이디를 입력해주세요."
                 }

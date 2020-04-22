@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            border-radius: 5px;
+            margin: 1%;
+            color: #FAF8F6;
+            font-weight: bold;
+            font-size: 14px;
+            box-sizing: border-box;
+            
+        }
+
+
+        .frame{
+            border: none;
+            width: 400px;
+            height: 300px;
+            background-color:#DDDDDD ;
+            padding: 0.1%;
+            text-align: center;
+            
+            
+        }
+
+
+       
+        .display{
+            font-size: 20px;
+            color: #373737;
+            background-color: #70C738;
+            height: 25%;
+            text-align: right;
+            padding-right: 5%;
+            line-height: 50px;
+            
+            
+        }
+        .backSpace{
+            float: left;
+            width: 48%;
+            
+            background-color:#7B7B7B;
+        }
+        .number{
+            float: left;            
+            width: 23%;
+            background-color:#373737;
+        }
+        .backSpace, .number{
+            
+            height: 35px ;
+            line-height: 35px;
+            
+
+        }        
+    </style>
+
+    <script>
+        var ind = 0;
+        var arr = new Array();
+        var formula = "";
+        var dis = document.getElementById("disp");
+        var cal = ["+", "-", "x", "/"]
+
+        function showArr(array){
+            
+            for(var i=0 ; i<array.length; i++){                                                             
+                disp= disp + array[i];
+                console.log(disp)
+            }
+            console.log(dis);
+            // dis.hidden = true;
+            dis.innerText = disp;
+        }
+
+        function result(array){       
+            var disp="";
+            for(var i=0 ; i<array.length; i++){ 
+                if(!(array[i] in cal)){
+                    formula= formula.concat(array[i]);
+                    console.log(formula)                ;
+                }                
+            }
+            dis.innerText = eval(formula);
+
+        }
+
+
+        function getNum(num){       
+        
+        if(num in cal){
+            if(arr[ind] in cal){
+                arr[ind] = num;
+                showArr(arr);
+            }
+            else{
+                arr[ind++] = num;
+                showArr(arr); 
+            }
+        }
+        else if(num == "="){
+            result(arr)
+        }
+        else{
+            arr[ind++] = num; 
+            showArr(arr);       
+        }  
+   
+        }
+
+    </script>
+</head>
+<body>
+    <div class="frame">
+        <div class="display" id="disp">
+            0
+        </div>
+        <div style="clear: both;"></div>
+        
+        <div class="backSpace" onclick="getNum('BackSpace');">BackSpace</div>
+        <div class="backSpace" onclick="getNum('C');">C</div>
+        <div style="clear: both;"></div>
+        
+        <div class="number" onclick="getNum('1');">1</div>
+        <div class="number" onclick="getNum('2');">2</div>
+        <div class="number" onclick="getNum('3');">3</div>
+        <div class="number" onclick="getNum('/');">/</div>
+        <div style="clear: both;"></div>
+
+        <div class="number" onclick="getNum('4');">4</div>
+        <div class="number" onclick="getNum('5');">5</div>
+        <div class="number" onclick="getNum('6');">6</div>
+        <div class="number" onclick="getNum('x');">x</div>
+        <div style="clear: both;"></div>
+        
+        <div class="number" onclick="getNum('7');">7</div>
+        <div class="number" onclick="getNum('8');">8</div>
+        <div class="number" onclick="getNum('9');">9</div>
+        <div class="number" onclick="getNum('+');">+</div>
+        <div style="clear: both;"></div>
+
+        <div class="number" onclick="getNum('=');">=</div>
+        <div class="number" onclick="getNum('0');">0</div>
+        <div class="number" onclick="getNum('.');">.</div>
+        <div class="number" onclick="getNum('-');">-</div>
+        <div style="clear: both;"></div>
+    </div>
+
+</body>
+</html>

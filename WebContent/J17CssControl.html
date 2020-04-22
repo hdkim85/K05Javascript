@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        var pTag, pSize;
+
+        window.onload = function(){
+            pTag = document.getElementById("article");
+            pSize = parseInt(pTag.style.fontSize);
+        }
+
+        function fnArticle(flag){
+
+            switch(flag){
+                case "+":
+                    pSize +=10;
+                    pTag.style.fontSize = pSize + "px";
+                    break;
+                case "-":
+                    pSize -=10;
+                    pTag.style.fontSize = pSize + "px";
+                    break;
+                case "R":
+                    pTag.style.color = "red";
+                    break;
+                case "G":
+                    pTag.style.color = "green";
+                    break;
+                case "B":
+                    pTag.style.color = "blue";
+                    break;
+                case "Bo":
+                    pTag.style.fontWeight = "bold";
+                    break;
+                case "No":
+                    pTag.style.fontWeight = "normal";
+                    break;
+                case "Ce":
+                    pTag.style.textAlign = "center";
+                    break;
+                case "Le":
+                    pTag.style.textAlign = "left";
+                    break;
+                default:
+                    pTag.style.color = "black";
+            }
+        }
+
+    /*
+        문제] 글꼴바꾸기 버튼을 계속 누를때마다 아래 5가지
+        폰트가 토글되어 적용될수 있도록 함수를 정의하시오.
+        글꼴 : Verdana, 굴림체, 휴먼옛체, 궁서, Impact
+    
+        function setFont(){
+            실행부;
+        }
+        */
+
+        var ind = 0;//폰트 토글을 위한 전역변수
+            function setFont() {
+                var art = document.getElementById("article");
+                var arr = ["굴림", "돋움체", "배달의민족 을지로체 TTF", "궁서"];
+                /*
+                var fontToggle = ind%4;                
+                */                
+                if (ind > 3) {
+                    ind = 0;
+                }
+                //위에서 구한 수를 인덱스로 폰트 설정
+                art.style.fontFamily = arr[ind];
+                //함수호출시마다 1 증가
+                ind++;
+	}
+
+
+
+
+    </script>
+
+
+</head>
+<body>
+    <h2>자바스크립트로 CSS 제어하기</h2>
+    <input type="button" value = "글꼴바꾸기" onclick="setFont();">
+    <fieldset>
+        <legend>신문기사</legend>
+        <button onclick="fnArticle('+');">+</button>
+        <button onclick="fnArticle('-');">-</button>
+        <button onclick="fnArticle('R');">Red</button>
+        <button onclick="fnArticle('G');">Green</button>
+        <button onclick="fnArticle('B');">Blue</button>
+        <button onclick="fnArticle('');">Black</button>
+        <button onclick="fnArticle('Bo');">볼드체</button>
+        <button onclick="fnArticle('No');">보통체</button>
+        <button onclick="fnArticle('Ce');">가운데정렬</button>
+        <button onclick="fnArticle('Le');">좌측정렬</button>
+
+    </fieldset>
+  
+
+    <p style="font-size: 12px;" id="article">
+        미 CNN 등 외신들이 ‘김정은 중태설’을 쏟아낸 지 하루가 지났지만 김정은 국무위원장의 공개 활동 소식은 전해지지 않고 있다. 
+        북한 노동당 기관지 노동신문은 22일 김정은 동정 보도 없이 ‘자력갱생은 우리 당의 일관한 정치노선’이란 제목의 논설을 1면에 실었다.
+        <br><br>
+        논설은 “우리가 아직은 남보다 뒤떨어진 것도 있고 어려움을 겪고 있는 것도 사실”이라며 북한이 겪고 있는 경제난을 이례적으로 ‘고백’했다. 
+        이어 “우리 인민은 감당하기 어려운 간고한 시련의 고비들을 이겨내면서 자기 힘으로 살아나간다”며 “자력부강, 자력번영의 기치 높이 나라의 존엄을 굳건히 지키고 사회주의강국을 건설하겠다는 것이 우리 인민의 억센 혁명신념”이라고 했다.
+        <br><br>
+        신문은 ‘그 무엇과도 바꿀 수 없는 우리의 존엄’이란 기사에서 “우리에게 있어서 경제건설에 유리한 대외적 환경이 절실히 필요한 것은 사실이지만 
+        결코 화려한 변신을 바라며 지금껏 목숨처럼 지켜온 존엄을 팔 수는 없다”고 했다. 미국 등 국제사회의 비핵화 압박에 굴하지 않고 
+        연말 당중앙위 전원회의에서 채택한 대미(對美) 정면돌파 기조를 계속 이어가겠다는 의지를 강조한 것으로 풀이된다.        
+        
+    </p>
+    
+</body>
+</html>
