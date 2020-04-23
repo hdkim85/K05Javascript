@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //location.reload : F5키 누른것과 같음
+                
+        var targetNum;
+        var cnt = 0;
+        var flag = false;
+        window.onload = function(){
+
+            targetNum = parseInt(Math.random()*1000)%101;
+            console.log(targetNum);
+        }
+
+        function game(){
+            
+            var img_tag = document.getElementById("image");
+            var num = document.getElementById("number");
+            var count = document.getElementById("count");
+            console.log(num.value);     
+
+            
+
+            if(num.value<1 || num.value>100||num.value==""){
+                alert("1~100사이의 숫자를 입력하세요.");
+                num.focus();
+            }
+            
+            else{
+                if(num.value==targetNum){
+                img_tag.src = "./images/answer.jpeg";
+                    alert("게임을 다시 시작합니다.");
+                    location.reload();
+                }
+                else if(num.value>targetNum){
+                    img_tag.src = "./images/up.jpg";
+                }
+                else{
+                    img_tag.src = "./images/down.jpg";
+                }
+                
+                count.innerText=++cnt;
+            }
+
+            if(cnt>=7){
+                alert("게임을 다시 시작합니다.");
+                location.reload();
+            }   
+        }
+    </script>
+    <style>
+        #count{
+            font-size: 3em;
+            font-weight: bold;
+        }
+        
+    </style>
+</head>
+<body>
+    <h2>업다운게임</h2>
+    <h3>1~100사이의 숫자를 입력하세요</h3>
+<br>
+
+    시도횟수 : <span id="count">0</span>회
+    <br>
+    <form name = "rpcFrom">
+        숫자입력 : <input type="number" id="number" style="width: 40px;" min="1" max="100">
+        <input type="button" id="result" value="확인" style="width: 40px;" onclick="game();">
+    </form>
+    <img src="./images/updowngame.jpg" alt="시작이미지" id="image">
+    
+
+</body>
+</html>
